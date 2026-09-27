@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The backend (backend/server.js) is a plain HTTP server (http://<lan-ip>:5000), not HTTPS.
+  Starting with Android 9 (API 28), the OS blocks plaintext (cleartext) HTTP by default,
+  which silently breaks every API call from a real device. This config re-allows cleartext
+  traffic so the app can reach the local dev/LAN backend.
+
+  This is fine for local development. Before a real production/Play Store release, put the
+  backend behind HTTPS and remove cleartextTrafficPermitted="true" below.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config>
